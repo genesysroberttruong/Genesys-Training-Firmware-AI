@@ -52,14 +52,17 @@ src/
     telemetry.c    the telemetry task
     cmd.c          console command handler
 scripts/           run.sh, debug.sh, gdb.sh, gdb-init.gdb
+tests/             host-native unit tests (make test)
+examples/          driver_template.[ch] - "write like this" reference
 docs/              workshop run sheet, prompts, prep & facilitator notes
-Makefile           build / run / debug targets
+Makefile           build / run / debug / test targets
 ```
 
 ## Quick start (inside the dev container)
 
 ```bash
 make run       # build + run; quit QEMU with Ctrl-A then X
+make test      # run the host-native unit tests (no ARM/QEMU)
 ```
 
 Debugging (two terminals):

@@ -44,6 +44,15 @@ type 'help' + Enter for console commands
 
 Note `min=0.00` throughout — that's the symptom.
 
+## Unit tests (`make test`)
+
+`make test` builds the hardware-independent modules with the host compiler and
+runs `tests/test_main.c`. The **baseline is green** — it prints `ALL TESTS
+PASSED`. The stats test deliberately checks `max`, `mean`, `sum`, and `count`
+but **not** `min`: leaving the buggy path uncovered is intentional and is the
+Demo 3 (step 5) talking point ("untested code is where bugs hide"). Do not add
+a `min` assertion to the baseline — that's the attendees' job in the demo.
+
 ## After Demo 2 (filter added)
 
 Frames should also show a `smooth=` field. The smoothed value should lag the
@@ -74,9 +83,10 @@ git stash clear      # (optional) drop stashed experiments
 ## Pre-flight (do this once before the room arrives)
 
 1. `make clean && make run` → confirm banner + telemetry, `min=0.00`.
-2. `./scripts/debug.sh` + `./scripts/gdb.sh` in two terminals → confirm the
+2. `make test` → confirm `ALL TESTS PASSED`.
+3. `./scripts/debug.sh` + `./scripts/gdb.sh` in two terminals → confirm the
    breakpoint hits and `print *s` works. `quit` GDB, Ctrl-A X the QEMU.
-3. `git checkout .` to make sure the tree is clean for the live session.
+4. `git checkout .` to make sure the tree is clean for the live session.
 
 ## Timing flex
 

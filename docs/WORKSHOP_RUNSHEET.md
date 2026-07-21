@@ -110,8 +110,9 @@ module and show a `smooth=` field in each telemetry frame.
    ```
 
    The frame now includes a `smooth=` value that lags/steadies the raw reading.
-4. If time allows, run **Prompt 2b**: *"add a unit-style self-test"* or *"make
-   the smoothing factor configurable"* to show iterative refinement.
+4. If time allows, run **Prompt 2b**: ask it to add a test for the filter in
+   `tests/` and run `make test` — the agent **self-verifies** its own code.
+   (Call back to the "give it a way to verify" setup tip.)
 
 **Talking points:** you still own the review; the agent handles boilerplate
 (header guards, wiring, formatting) so you focus on the algorithm.
@@ -155,6 +156,10 @@ you would on the job — reproduce, hypothesise, inspect with a debugger, fix.*
    ```
 
    `min` now tracks the real minimum. Done.
+5. **If time allows — lock it in with a test:** ask Claude Code to add a `min`
+   assertion to `tests/test_main.c` and run `make test`. Point out that `min`
+   was the *one* thing the suite didn't cover — which is exactly why the bug
+   survived. Now it can't come back.
 
 **Talking points:** AI narrows the search; the debugger is ground truth. Use
 both — never merge an AI fix you haven't confirmed.

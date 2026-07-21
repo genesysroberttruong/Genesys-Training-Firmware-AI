@@ -44,12 +44,12 @@ Then wire it into src/core/telemetry.c so each telemetry frame also prints a
 picks up the new file.
 ```
 
-**2b — refine (optional)**
+**2b — self-verify (optional)**
 
 ```
-Make the EWMA smoothing factor a compile-time constant in filter.h with a
-comment explaining the trade-off, and add a tiny self-test function I can call
-from main() to sanity-check it converges.
+Add a test for the new filter module to tests/test_main.c: feed it a known
+sequence and assert the smoothed output converges as expected. Then run
+`make test` and show me the result.
 ```
 
 ---
@@ -70,6 +70,13 @@ likely cause in the code and explain your reasoning. Don't fix it yet.
 Confirmed in GDB: in stats_update(), `value < s->min` is never true because
 s->min starts at 0 and all samples are positive. Fix stats_reset() so the
 running minimum works correctly, and briefly explain why your fix is right.
+```
+
+**3c — lock it in with a test (optional)**
+
+```
+Add an assertion to the stats test in tests/test_main.c that would have caught
+this bug (check `min` is the smallest value seen), then run `make test`.
 ```
 
 ---
