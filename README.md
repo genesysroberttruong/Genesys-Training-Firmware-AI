@@ -80,3 +80,4 @@ Debugging (two terminals):
 - [docs/PROMPTS.md](docs/PROMPTS.md) — copy-paste prompts for each demo.
 - [docs/FACILITATOR_NOTES.md](docs/FACILITATOR_NOTES.md) — answers & recovery tips
   (**facilitator only — contains the debug-demo spoiler**).
+- [docs/CLEANUP.md](docs/CLEANUP.md) — reset between runs & reclaim disk afterward.
