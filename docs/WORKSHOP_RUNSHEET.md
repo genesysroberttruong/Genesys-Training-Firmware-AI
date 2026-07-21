@@ -12,7 +12,7 @@ along in their own dev container. Exact prompts are in
 
 ---
 
-## 0:00 – 0:05 — Setup & orientation (5 min)
+## 0:00 – 0:02 — Welcome & baseline (2 min)
 
 - One sentence on the target: *"Real firmware pattern — vector table, a HAL, a
   scheduler with an interrupt, drivers — but running in QEMU so nobody needs
@@ -29,7 +29,34 @@ along in their own dev container. Exact prompts are in
 
 ---
 
-## 0:05 – 0:17 — Demo 1: Understand a complex codebase (12 min)
+## 0:02 – 0:08 — Set your project up so AI is effective (6 min)
+
+**Message:** *10 minutes of setup makes every later AI interaction faster and
+more accurate. This repo is already set up the right way — here's what and why.*
+Full reference: [AI_PROJECT_SETUP.md](AI_PROJECT_SETUP.md).
+
+Tour these files on the projector (don't just describe them — open them):
+
+1. **`CLAUDE.md`** (repo root) — auto-loaded context: what the project is,
+   build/run commands, layout, conventions, guardrails. *The* highest-leverage file.
+2. **`docs/datasheets/`** — MCU manual + an extracted register table so the AI
+   grounds register code in the real hardware instead of hallucinating
+   addresses. Firmware's biggest AI failure mode, fixed with a folder.
+3. **Conventions inside `CLAUDE.md`** — no float, no malloc, one module =
+   `.c`+`.h`. You'll watch these pay off in Demo 2.
+4. **`.claude/settings.json`** — a permissions allowlist so `make`/`qemu`/`gdb`
+   don't prompt every time (keeps a live demo moving).
+5. **`.claude/commands/`** — custom slash commands (`/explain-module`, `/build`)
+   that package a repeated prompt.
+
+*Mention, don't demo:* commit before letting AI loose (clean diffs + easy
+undo), keep a known-good reference output, give it a way to self-verify (build
+target / tests). Land the rule: **setup grounds the AI; it doesn't replace your
+review.**
+
+---
+
+## 0:08 – 0:19 — Demo 1: Understand a complex codebase (11 min)
 
 **Message:** *You dropped into an unfamiliar firmware repo. Instead of reading
 12 files cold, have the agent map it for you.*
@@ -43,8 +70,12 @@ along in their own dev container. Exact prompts are in
    *"How does a received console byte travel from the UART to a command being
    executed?"* This shows it tracing across `uart.c` → `ringbuffer.c` →
    `cmd.c`.
-3. **Talking points while it works:**
+3. **Callback to setup:** run the custom command `/explain-module scheduler` —
+   the same question, packaged as a one-word command from the setup segment.
+4. **Talking points while it works:**
    - It reasons over the *whole* repo, not one open file.
+   - Notice it cites `docs/datasheets/` for the register-level bits — that's the
+     grounding from setup paying off.
    - Ask it for a diagram — great for onboarding docs.
    - Trust-but-verify: click the `file:line` references it cites.
 
@@ -53,7 +84,7 @@ minutes of reading."
 
 ---
 
-## 0:17 – 0:31 — Demo 2: Write a new module (14 min)
+## 0:19 – 0:32 — Demo 2: Write a new module (13 min)
 
 **Message:** *Now we extend it — the everyday firmware task of adding a small
 library/driver and wiring it in.*
@@ -83,7 +114,7 @@ module and show a `smooth=` field in each telemetry frame.
 
 ---
 
-## 0:31 – 0:43 — Demo 3: Debug with AI + GDB (12 min)
+## 0:32 – 0:43 — Demo 3: Debug with AI + GDB (11 min)
 
 **Message:** *Back to that `min=0.00`. Let's find and fix a real bug the way
 you would on the job — reproduce, hypothesise, inspect with a debugger, fix.*

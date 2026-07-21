@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(make:*)",
+      "Bash(./scripts/run.sh:*)",
+      "Bash(./scripts/debug.sh:*)",
+      "Bash(./scripts/gdb.sh:*)",
+      "Bash(qemu-system-arm:*)",
+      "Bash(gdb-multiarch:*)",
+      "Bash(arm-none-eabi-gcc:*)",
+      "Bash(arm-none-eabi-objcopy:*)",
+      "Bash(arm-none-eabi-size:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
+    ]
+  }
+}

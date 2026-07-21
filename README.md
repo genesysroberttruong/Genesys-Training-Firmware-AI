@@ -15,10 +15,27 @@ On boot it prints a banner, then a cooperative scheduler runs two tasks:
   `[t=...] raw=25.11 min=... max=... mean=... n=...`
 - **cmd** — reads the console and handles `help`, `reset`, `stats`.
 
+## Set up for AI
+
+This repo is deliberately set up to make an AI assistant effective — the
+opening segment of the workshop tours these:
+
+- `CLAUDE.md` — project context auto-loaded by Claude Code (build commands,
+  layout, conventions, guardrails).
+- `docs/datasheets/` — hardware references so register code is grounded, not
+  guessed.
+- `.claude/settings.json` — permissions allowlist so routine commands don't
+  prompt.
+- `.claude/commands/` — custom slash commands (`/explain-module`, `/build`).
+
+See [docs/AI_PROJECT_SETUP.md](docs/AI_PROJECT_SETUP.md) for the why behind each.
+
 ## Project layout
 
 ```
 .devcontainer/     Dockerfile + devcontainer.json (the containerised toolchain)
+.claude/           CLAUDE.md context, settings.json permissions, commands/
+docs/datasheets/   hardware reference material for grounding the AI
 include/           lm3s6965.h  - memory-mapped register definitions
 linker/            lm3s6965.ld - memory map & sections
 src/
@@ -55,6 +72,7 @@ Debugging (two terminals):
 ## Workshop docs
 
 - [docs/ATTENDEE_PREP.md](docs/ATTENDEE_PREP.md) — send this out beforehand.
+- [docs/AI_PROJECT_SETUP.md](docs/AI_PROJECT_SETUP.md) — "set up for AI" talk segment.
 - [docs/WORKSHOP_RUNSHEET.md](docs/WORKSHOP_RUNSHEET.md) — the 45-minute plan.
 - [docs/PROMPTS.md](docs/PROMPTS.md) — copy-paste prompts for each demo.
 - [docs/FACILITATOR_NOTES.md](docs/FACILITATOR_NOTES.md) — answers & recovery tips
