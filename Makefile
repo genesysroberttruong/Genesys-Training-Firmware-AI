@@ -47,7 +47,22 @@ run: $(TARGET)
 debug: $(TARGET)
 	$(QEMU) $(QEMUFLAGS) -S -gdb tcp::1234
 
-clean:
-	rm -f $(OBJS) $(TARGET) build/firmware.bin
+# ----------------------------------------------------------------------------
+# Host-side unit tests.
+#
+# The hardware-independent modules (ringbuffer, stats, sensor) are compiled
+# and run with the NATIVE compiler - no ARM, no QEMU - so logic can be tested
+# in milliseconds. HOSTCC is the host cc, not the cross-compiler.
+# ----------------------------------------------------------------------------
+HOSTCC    ?= cc
+TEST_SRCS  = tests/test_main.c src/core/ringbuffer.c src/core/stats.c src/core/sensor.c
 
-.PHONY: all run debug clean
+test:
+	@mkdir -p build
+	$(HOSTCC) -std=c11 -Wall -Wextra -Iinclude -Isrc $(TEST_SRCS) -o build/tests
+	./build/tests
+
+clean:
+	rm -f $(OBJS) $(TARGET) build/firmware.bin build/tests
+
+.PHONY: all run debug test clean

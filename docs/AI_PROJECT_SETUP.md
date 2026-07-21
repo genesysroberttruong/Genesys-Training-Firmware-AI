@@ -42,16 +42,23 @@ Turn a prompt you type often into a command. This repo ships `/explain-module`
 and `/build`. Great for encoding team-standard workflows ("review like this",
 "generate a driver from this template").
 
+### 6. A way for the AI to self-verify  →  `make test`, see [../tests/](../tests/)
+The hardware-independent modules build and run with the **host** compiler (no
+ARM, no QEMU), so the AI can run `make test` and catch its own mistakes in
+milliseconds. This is where the "write a module" demo pays off twice: the AI
+writes the filter *and* a test for it, then proves it works.
+
+### 7. A driver template to copy  →  see [../examples/driver_template.c](../examples/driver_template.c)
+Point the AI at a concrete example — *"write a driver for X like
+`examples/driver_template.c`"* — and it copies the structure, error handling,
+and naming automatically. Examples beat prose descriptions.
+
 ## Worth doing too (mention, don't demo)
 
 - **Commit before you let the AI loose.** A clean git state makes every AI
   change a reviewable diff and a one-command undo (`git checkout .`).
 - **Keep a known-good reference** (golden UART log, expected output) so you and
   the AI can compare against "correct" when debugging.
-- **Give it a way to self-verify** — a `make` target, a host-buildable unit
-  test. An AI that can run the build catches its own mistakes.
-- **A driver/template to copy** — point at an existing module and say "write the
-  new one like this." Examples beat descriptions.
 - **`.gitattributes` for line endings** — on a Windows + Linux-container team,
   pin LF so scripts and Makefiles don't break (this repo does this).
 - **Focus large PDFs** — tell the AI the section/page range instead of "read

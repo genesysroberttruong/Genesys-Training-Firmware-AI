@@ -48,11 +48,15 @@ Tour these files on the projector (don't just describe them — open them):
    don't prompt every time (keeps a live demo moving).
 5. **`.claude/commands/`** — custom slash commands (`/explain-module`, `/build`)
    that package a repeated prompt.
+6. **`make test` + `tests/`** — host-native unit tests the AI can run to
+   self-verify logic in milliseconds (no ARM/QEMU). Run it once so they see it
+   green: `make test`.
+7. **`examples/driver_template.c`** — a "write like this" reference so generated
+   drivers match the house structure.
 
 *Mention, don't demo:* commit before letting AI loose (clean diffs + easy
-undo), keep a known-good reference output, give it a way to self-verify (build
-target / tests). Land the rule: **setup grounds the AI; it doesn't replace your
-review.**
+undo), keep a known-good reference output. Land the rule: **setup grounds the
+AI; it doesn't replace your review.**
 
 ---
 

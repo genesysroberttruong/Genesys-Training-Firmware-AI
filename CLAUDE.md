@@ -18,7 +18,13 @@ cooperative scheduler.
 make            # build build/firmware.elf
 make run        # build + run under QEMU  (quit: Ctrl-A then X)
 make debug      # run under QEMU halted, waiting for GDB on :1234
+make test       # build + run host-native unit tests (no ARM/QEMU)
 ```
+
+**Self-verify with `make test`** after changing any hardware-independent
+module in `src/core/`. The tests live in `tests/` and build with the host
+compiler, so they run in milliseconds. When you add such a module, add tests
+for it there too.
 
 Debugging uses two terminals: `./scripts/debug.sh` then `./scripts/gdb.sh`.
 GDB is `gdb-multiarch` (see `scripts/gdb-init.gdb`).
@@ -32,6 +38,8 @@ GDB is `gdb-multiarch` (see `scripts/gdb-init.gdb`).
 - `include/lm3s6965.h` — memory-mapped register definitions
 - `linker/lm3s6965.ld` — memory map & sections
 - `docs/datasheets/` — **read these before writing peripheral register code**
+- `examples/driver_template.[ch]` — copy this shape when writing a new driver
+- `tests/` — host-native unit tests (`make test`)
 
 ## Conventions (please follow when writing code)
 

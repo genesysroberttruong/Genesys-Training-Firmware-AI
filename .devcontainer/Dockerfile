@@ -12,6 +12,6 @@ RUN apt-get update \
         libnewlib-arm-none-eabi \
         qemu-system-arm \
         gdb-multiarch \
-        make \
+        build-essential \
         git \
  && rm -rf /var/lib/apt/lists/*
