@@ -1,17 +1,45 @@
 # Attendee prep — do this BEFORE the workshop
 
-You need three things installed and one folder opened in a container. Budget
+You need a few things installed and one folder opened in a container. Budget
 ~20 minutes; the container image download is the slow part, so do it the day
 before on a good connection.
 
 ## 1. Install the tools (Windows)
 
-1. **Docker Desktop** — https://www.docker.com/products/docker-desktop/
+1. **WSL 2** — Docker Desktop runs on top of this, so get it working first
+   rather than mid-install.
+   - Open **PowerShell as Administrator** and run:
+
+     ```powershell
+     wsl --install
+     ```
+
+     This enables the required Windows features, installs WSL 2, and adds a
+     default Linux distro. **Restart when prompted.** (Requires Windows 10
+     version 2004+ or Windows 11. If the command isn't found, run
+     `winver` to check your version and update Windows first.)
+   - Already have WSL installed from something else? Make sure it's up to
+     date and version 2 is the default:
+
+     ```powershell
+     wsl --update
+     wsl --set-default-version 2
+     ```
+   - Verify it worked:
+
+     ```powershell
+     wsl --status
+     ```
+
+     Should report **Default Version: 2**. If it says 1, run
+     `wsl --set-default-version 2` and check again.
+2. **Docker Desktop** — https://www.docker.com/products/docker-desktop/
    - After installing, launch it once and let it finish starting (whale icon
-     in the system tray stops animating). On Windows it uses the WSL 2 backend;
-     accept the prompt to install/update WSL if asked.
-2. **Visual Studio Code** — https://code.visualstudio.com/
-3. **Dev Containers** extension for VS Code
+     in the system tray stops animating).
+   - Settings → General → confirm **"Use the WSL 2 based engine"** is
+     checked (it's on by default on a fresh install, but worth a glance).
+3. **Visual Studio Code** — https://code.visualstudio.com/
+4. **Dev Containers** extension for VS Code
    - In VS Code: Extensions (Ctrl+Shift+X) → search **"Dev Containers"**
      (publisher: Microsoft) → Install.
 
