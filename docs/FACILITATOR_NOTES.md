@@ -74,7 +74,7 @@ git stash clear      # (optional) drop stashed experiments
 | Symptom | Cause / fix |
 |---|---|
 | No output after the banner | SysTick not ticking. Confirm your QEMU is recent (`qemu-system-arm --version`); the `lm3s6965evb` SysTick works on current builds. Rebuild clean: `make clean && make run`. |
-| `arm-none-eabi-gcc: not found` | Terminal isn't inside the container. Reopen: F1 → "Dev Containers: Reopen in Container". |
+| `arm-none-eabi-gcc: not found` | Terminal isn't inside the container. Reopen: Ctrl+Shift+P → "Dev Containers: Reopen in Container". |
 | `Ctrl-C` won't quit QEMU | Use **Ctrl-A** then **X**. (Ctrl-C is passed to the guest.) |
 | GDB can't connect | The `./scripts/debug.sh` terminal must be left running; run `./scripts/gdb.sh` in a *second* terminal. |
 | Attendee typing does nothing | With `-nographic`, keystrokes go to the guest UART; type `help` + Enter. Focus must be on the QEMU terminal. |

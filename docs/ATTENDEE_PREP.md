@@ -45,14 +45,23 @@ before on a good connection.
 
 ## 2. Get the project
 
-Copy the `Training_AI_Demo` folder to your machine (or clone it if it's in a
-repo). Remember where you put it.
+Clone it from GitHub. You'll need **Git** — most machines have it; if not, grab
+it from https://git-scm.com/download/win. In a terminal (PowerShell or Git
+Bash):
+
+```bash
+git clone https://github.com/genesysroberttruong/Genesys-Training-Firmware-AI.git
+cd Genesys-Training-Firmware-AI
+```
+
+Remember where you cloned it — that's the folder you'll open in VS Code.
 
 ## 3. Open it in the container (this pre-downloads everything)
 
-1. Open the `Training_AI_Demo` folder in VS Code (File → Open Folder).
+1. Open the `Genesys-Training-Firmware-AI` folder in VS Code (File → Open Folder).
 2. VS Code will pop up **"Reopen in Container"** (bottom-right). Click it.
-   - No popup? Press `F1` → type **"Dev Containers: Reopen in Container"** → Enter.
+   - No popup? Press **Ctrl+Shift+P** to open the Command Palette → type
+     **"Dev Containers: Reopen in Container"** → Enter.
 3. Wait for the image to build. **The first build downloads ~1–2 GB** and can
    take 10–20 minutes. Later starts are seconds.
 4. When it finishes, open a terminal in VS Code (`` Ctrl+` ``) and confirm the
