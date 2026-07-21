@@ -1,0 +1,19 @@
+{
+  "name": "Firmware AI Workshop (Cortex-M / QEMU)",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "marus25.cortex-debug",
+        "anthropic.claude-code"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "postCreateCommand": "echo 'Toolchain check:' && arm-none-eabi-gcc --version | head -n1 && qemu-system-arm --version | head -n1 && gdb-multiarch --version | head -n1"
+}
