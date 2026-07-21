@@ -19,7 +19,7 @@ CFLAGS   = $(CPU) -O0 -g3 -Wall -Wextra \
            -Iinclude -Isrc
 
 LDFLAGS  = $(CPU) -T linker/lm3s6965.ld -nostartfiles \
-           -Wl,--gc-sections -specs=nano.specs
+           -Wl,--gc-sections
 
 SRCS     = $(wildcard src/*.c src/hal/*.c src/core/*.c)
 OBJS     = $(SRCS:.c=.o)
