@@ -1,0 +1,12 @@
+# These files are consumed inside the Linux dev container and MUST use LF
+# line endings, even when the repo is checked out on Windows. CRLF would break
+# bash scripts (bad shebang / "\r: command not found") and Makefile recipes.
+* text=auto eol=lf
+
+*.sh      text eol=lf
+*.gdb     text eol=lf
+Makefile  text eol=lf
+*.mk      text eol=lf
+*.c       text eol=lf
+*.h       text eol=lf
+*.ld      text eol=lf
