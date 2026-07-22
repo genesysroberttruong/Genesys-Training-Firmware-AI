@@ -18,6 +18,11 @@ before on a good connection.
      default Linux distro. **Restart when prompted.** (Requires Windows 10
      version 2004+ or Windows 11. If the command isn't found, run
      `winver` to check your version and update Windows first.)
+   - **On first launch the Linux distro opens a terminal and asks you to create
+     a UNIX username and password.** Enter any values you like — they're local
+     to that distro, separate from your Windows login. Remember the password:
+     you'll need it for `sudo` commands inside Linux. (The password field stays
+     blank as you type — that's normal.)
    - Already have WSL installed from something else? Make sure it's up to
      date and version 2 is the default:
 
