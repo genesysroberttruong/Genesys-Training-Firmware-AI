@@ -11,13 +11,15 @@ before on a good connection.
    - Open **PowerShell as Administrator** and run:
 
      ```powershell
-     wsl --install
+     wsl --install -d Ubuntu
      ```
 
-     This enables the required Windows features, installs WSL 2, and adds a
-     default Linux distro. **Restart when prompted.** (Requires Windows 10
-     version 2004+ or Windows 11. If the command isn't found, run
-     `winver` to check your version and update Windows first.)
+     This enables the required Windows features, installs WSL 2, and installs
+     the **Ubuntu** distro (naming it explicitly keeps everyone on the same
+     distro, so the `wsl --set-default Ubuntu` steps below match). **Restart
+     when prompted.** (Requires Windows 10 version 2004+ or Windows 11. If the
+     command isn't found, run `winver` to check your version and update Windows
+     first.)
    - **On first launch the Linux distro opens a terminal and asks you to create
      a UNIX username and password.** Enter any values you like — they're local
      to that distro, separate from your Windows login. Remember the password:
