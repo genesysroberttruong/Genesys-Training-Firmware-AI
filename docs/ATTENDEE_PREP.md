@@ -43,6 +43,14 @@ before on a good connection.
      in the system tray stops animating).
    - Settings → General → confirm **"Use the WSL 2 based engine"** is
      checked (it's on by default on a fresh install, but worth a glance).
+   - Docker adds its own internal `docker-desktop` distro. **It must not be your
+     default distro.** Check with `wsl --list` — if it shows
+     **`docker-desktop (Default)`**, point the default back at your real Linux
+     distro, or Dev Containers will fail with "unsupported WSL distribution":
+
+     ```powershell
+     wsl --set-default Ubuntu
+     ```
 3. **Visual Studio Code** — https://code.visualstudio.com/
 4. **Dev Containers** extension for VS Code
    - In VS Code: Extensions (Ctrl+Shift+X) → search **"Dev Containers"**
