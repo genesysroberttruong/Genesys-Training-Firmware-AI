@@ -43,8 +43,9 @@ before on a good connection.
 2. **Docker Desktop** — https://www.docker.com/products/docker-desktop/
    - After installing, launch it once and let it finish starting (whale icon
      in the system tray stops animating).
-   - Settings → General → confirm **"Use the WSL 2 based engine"** is
-     checked (it's on by default on a fresh install, but worth a glance).
+   - Settings → **Resources → WSL Integration** → make sure integration is
+     **enabled for your Ubuntu distro** (toggle it on, then **Apply & Restart**).
+     This is what lets Docker — and the dev container — use your WSL 2 distro.
    - Docker adds its own internal `docker-desktop` distro. **It must not be your
      default distro.** Check with `wsl --list` — if it shows
      **`docker-desktop (Default)`**, point the default back at your real Linux
